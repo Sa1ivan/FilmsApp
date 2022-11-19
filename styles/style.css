@@ -30,6 +30,27 @@
   justify-content: space-between;
 }
 
+@media screen and (max-width: 420px) {
+  .header__content {
+    flex-direction: column;
+  }
+}
+
+.header__logo{
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media screen and (max-width: 420px) {
+  .header__logo {
+    width: 50px;
+    height: 50px;
+    align-self: center;
+  }
+}
+
 .header__form {
   width: 300px;
   display: flex;
@@ -62,19 +83,75 @@
   cursor: pointer;
 }
 
-.films{
-    max-width: 1280px;
-    margin: 10px auto;
-    height: 100vh;
-    background-color: #D8C3A5;
+.films {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100vh;
+  background-color: #d8c3a5;
+  overflow-y: auto;
 }
 
-.films__container{
-    display: grid;
+.films__container {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 25px;
 }
 
-.film__image{
-    background-image: url(../images/мститель.jpg);
-    width: 100px;
+@media screen and (max-width: 1290px) {
+  .films__container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
 
+@media screen and (max-width: 920px) {
+  .films__container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .films__container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .films__container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.film{
+  position: relative;
+  justify-self: center;
+}
+
+.film__image {
+  position: relative;
+  background-image: url(../images/avengers.jpeg);
+  width: 200px;
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.film__name{
+  font-size: 18px;
+  background-color: yellow;
+  display: flex;
+  width: 200px;
+  box-sizing: border-box;
+}
+
+.film__rank{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  padding: 8px 10px;
+  border: 5px solid green;
+  border-radius: 50%;
+  box-sizing: border-box;
 }
