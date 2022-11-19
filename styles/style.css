@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.page {
+  margin: 0 auto;
+  max-width: 1440px;
+  background-color: #eae7dc;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page__container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 1280px;
+  height: 100px;
+  margin: 10px auto;
+  background-color: #e98074;
+}
+
+.header__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__form {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  align-self: center;
+  margin: 10px;
+}
+
+.header__input {
+  width: 225px;
+  border: 2px solid black;
+}
+
+.header__submit {
+  width: 50px;
+  border: 2px solid black;
+  background-color: black;
+  color: white;
+  opacity: 1;
+  transition: opacity, width, color, 0.4s ease-in-out;
+}
+.header__submit:hover {
+  background-color: yellow;
+  color: black;
+  text-shadow: black;
+  opacity: 0.7;
+  width: 70px;
+  transition: opacity, width, color, 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.films{
+    max-width: 1280px;
+    margin: 10px auto;
+    height: 100vh;
+    background-color: #D8C3A5;
+}
+
+.films__container{
+    display: grid;
+}
+
+.film__image{
+    background-image: url(../images/мститель.jpg);
+    width: 100px;
+
+}
