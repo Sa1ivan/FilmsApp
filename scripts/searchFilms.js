@@ -1,16 +1,17 @@
 import TopFilms from "./topFilms.js";
 
 export default class SearchFilms extends TopFilms {
-  constructor(input, form, selector) {
+  constructor(input, form, selector, btns) {
     super(selector);
     this._selector = selector;
     this._input = input;
     this._form = form;
+    this._btns = btns;
   }
 
   _getFilms = async () => {
     this._response = await fetch(
-      `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${this._input.value}&page=1`,
+      `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${this._input.value}`,
       {
         method: "GET",
         headers: {
@@ -22,12 +23,14 @@ export default class SearchFilms extends TopFilms {
     this._processData(await this._response.json());
   };
 
-
   _addEventListener = () => {
     this._form.addEventListener("submit", (evt) => {
+      if (this._input.value) {
+        this._btns.style.display = "none";
+        this._getFilms();
+        this._form.reset();
+      }
       evt.preventDefault();
-      this._getFilms();
-      this._form.reset();
     });
   };
 

@@ -1,7 +1,10 @@
 export default class TopFilms {
-  constructor(selector, btn) {
+  constructor(selector, btn, btns, vol) {
     this._selector = selector;
     this._btn = btn;
+    this._btns = btns;
+    this._vol = vol;
+    this._number = 1;
   }
 
   _processData = (response) => {
@@ -14,9 +17,7 @@ export default class TopFilms {
 
   _getFilms = async () => {
     this._response = await fetch(
-      `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=${
-        this._number || 1
-      }`,
+      `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=${this._number}`,
       {
         method: "GET",
         headers: {
@@ -25,6 +26,7 @@ export default class TopFilms {
         },
       }
     );
+    this._vol.innerHTML = `${this._number}`;
     this._processData(await this._response.json());
   };
 
@@ -54,8 +56,32 @@ export default class TopFilms {
     }
   };
 
+  _addEventListener = () => {
+    this._btns.addEventListener("click", (evt) => {
+      if (evt.target.closest(".left")) {
+        this._number--;
+        if (this._number < 1) {
+          this._number = 13;
+        }
+      }
+      if (evt.target.closest(".right")) {
+        this._number++;
+        if (this._number > 13) {
+          this._number = 1;
+        }
+      }
+      this._getFilms();
+    });
+  };
+
   render = () => {
-    this._btn.addEventListener("click", this._getFilms);
+    this._btn.addEventListener("click", () => {
+      this._number = 1;
+      this._getFilms();
+      this._btns.style.display = "flex";
+    });
+    this._addEventListener();
     this._getFilms();
+    this._btns.style.display = "flex";
   };
 }
