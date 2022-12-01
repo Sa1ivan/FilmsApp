@@ -1,8 +1,8 @@
-import TopFilms from "./topFilms.js";
+import Films from "./renderFilms.js";
 
-export default class SearchFilms extends TopFilms {
+export default class SearchFilms extends Films {
   constructor(input, form, selector, btns) {
-    super(selector);
+    super();
     this._selector = selector;
     this._input = input;
     this._form = form;
